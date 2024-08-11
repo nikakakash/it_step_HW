@@ -1,0 +1,35 @@
+CREATE TABLE Deposits (
+    DepositID INT PRIMARY KEY AUTO_INCREMENT,
+    DepOwnerName VARCHAR(100),
+    DateOfBirth DATE,
+    City VARCHAR(100),
+    StreetName VARCHAR(100),
+    DepositAmount DECIMAL(10, 2),
+    Interest DECIMAL(5, 2),
+    Commission DECIMAL(5, 2),
+    Total DECIMAL(10, 2)
+);
+INSERT INTO Deposits (DepOwnerName, DateOfBirth, City, StreetName)
+VALUES
+    ('Alice Smith', '1985-04-12', 'Tbilisi', 'Rustaveli Street'),
+    ('Bob Johnson', '1990-11-23', 'Batumi', 'Gorgasaliz Street'),
+    ('Carol Davis', '1982-06-30', 'Tbilisi', 'Gorgasaliz Street');
+INSERT INTO Deposits (DepOwnerName, DateOfBirth, DepositAmount, Commission, Total)
+VALUES
+    ('David Brown', '1978-08-15', 1200.00, 50.00, 1250.00),
+    ('Eva Green', '1995-02-10', 1500.00, 75.00, 1575.00),
+    ('Frank White', '1988-12-25', 1600.00, 80.00, 1680.00),
+    ('Grace Lee', '1983-07-21', 1400.00, 70.00, 1470.00),
+    ('Hannah Martin', '1992-03-14', 1100.00, 55.00, 1155.00');
+SELECT * FROM Deposits;
+DELETE FROM Deposits
+WHERE DepositAmount > 1500;
+SELECT * FROM Deposits
+WHERE City = 'Tbilisi' AND StreetName = 'Rustaveli Street';
+SELECT * FROM Deposits
+WHERE City = 'Batumi' AND StreetName = 'Gorgasaliz Street'
+  AND DepositAmount > 1000 AND DepositAmount < 2000;
+SELECT * FROM Deposits
+WHERE DepOwnerName LIKE 'D%';
+DELETE FROM Deposits;
+DROP TABLE Deposits;
