@@ -32,3 +32,31 @@ def start_server():
 
 if __name__ == "__main__":
     start_server()
+
+import socket
+
+HOST = '127.0.0.1'
+PORT = 65432
+BUFFER_SIZE = 1024
+
+def start_client():
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect((HOST, PORT))
+
+    while True:
+        message = input("Enter message (or 'exit' to quit): ")
+        if message.lower() == 'exit':
+            break
+
+        
+        client_socket.sendall(message.encode('utf-8'))
+
+      
+        data = client_socket.recv(BUFFER_SIZE)
+        print(f'Received from server: {data.decode("utf-8")}')
+
+    client_socket.close()
+
+if __name__ == "__main__":
+    start_client()
+
