@@ -1,0 +1,23 @@
+-- Creating the Authors table
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50)
+);
+
+-- Creating the Books table with a foreign key reference
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY AUTO_INCREMENT,
+    Title VARCHAR(100),
+    AuthorID INT,
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
+-- Inserting data into Authors
+INSERT INTO Authors (FirstName, LastName) VALUES ('George', 'Orwell');
+INSERT INTO Authors (FirstName, LastName) VALUES ('J.K.', 'Rowling');
+
+-- Inserting data into Books
+INSERT INTO Books (Title, AuthorID) VALUES ('1984', 1);
+INSERT INTO Books (Title, AuthorID) VALUES ('Animal Farm', 1);
+INSERT INTO Books (Title, AuthorID) VALUES ('Harry Potter and the Philosopher\'s Stone', 2);
+INSERT INTO Books (Title, AuthorID) VALUES ('Harry Potter and the Chamber of Secrets', 2);
