@@ -1,0 +1,17 @@
+<!-- shopping_list/templates/shopping_list/add_item.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Item</title>
+</head>
+<body>
+    <h1>Add Item</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+    <a href="{% url 'index' %}">Back to Shopping List</a>
+</body>
+</html>

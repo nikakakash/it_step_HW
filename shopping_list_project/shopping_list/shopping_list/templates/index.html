@@ -1,0 +1,23 @@
+<!-- shopping_list/templates/shopping_list/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping List</title>
+</head>
+<body>
+    <h1>Shopping List</h1>
+    <a href="{% url 'add_item' %}">Add Item</a>
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item.item_name }} - {{ item.quantity }}
+                {% if not item.purchased %}
+                    <a href="{% url 'mark_purchased' item.id %}">Mark as Purchased</a>
+                {% endif %}
+                <a href="{% url 'delete_item' item.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
